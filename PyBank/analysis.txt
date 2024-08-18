@@ -1,0 +1,38 @@
+# Profit and Loss Analysis Script
+
+## Overview
+
+This Python script analyzes a CSV file containing financial data to calculate various metrics, including:
+- Total number of months in the dataset
+- Net total amount of "Profit/Losses" over the entire period
+- Average change in "Profit/Losses"
+- Greatest increase in profits (date and amount)
+- Greatest decrease in profits (date and amount)
+
+The script assumes that the CSV file contains columns for date and profit/loss amounts. The date format in the CSV should be `Month-Year` (e.g., `Jan-10`).
+
+## Prerequisites
+
+- Python 3.x
+- Required Python libraries: `os`, `csv`, `datetime`
+
+## Script Details
+
+### File Path
+
+- Update the `budget_csv` variable with the path to your CSV file.
+
+### CSV File Format
+
+The CSV file should have the following columns:
+- `Date`: The date of the financial record (format: `Month-Year`)
+- `Profit/Losses`: The profit or loss amount for the given month
+
+### Example CSV Format
+
+```csv
+Date,Profit/Losses
+Jan-10,867884
+Feb-10,984655
+Mar-10,322013
+...
