@@ -1,10 +1,13 @@
 import os
 import csv
-from datetime import datetime
+from datetime import datetime  # Import the datetime module
 
 # Path to collect data from the Resources folder
 budget_csv = os.path.join('Resources', 'budget_data.csv')
 
+# Path to export the results
+output_txt = os.path.join('Analysis', 'analysis_output.txt')
+  
 # Function to extract the year and month from a date
 def extract_year_month(date_str):
      # Adjust '%b-%y' to match the date format 'Jan-10'
@@ -68,3 +71,15 @@ print(f"Net Total: ${net_total}")
 print(f"Average Change: ${average_change:.2f}")
 print(f"Greatest Increase in Profits: {greatest_increase['date']} (${greatest_increase['amount']})")
 print(f"Greatest Decrease in Profits: {greatest_decrease['date']} (${greatest_decrease['amount']})")
+
+# Export results to a text file
+with open(output_txt, 'w') as file:
+    file.write("Financial Analysis")
+    file.write("---------------------------")
+    file.write(f"Total Months: {total_months}\n")
+    file.write(f"Net Total: ${net_total}\n")
+    file.write(f"Average Change: ${average_change:.2f}\n")
+    file.write(f"Greatest Increase in Profits: {greatest_increase['date']} (${greatest_increase['amount']})\n")
+    file.write(f"Greatest Decrease in Profits: {greatest_decrease['date']} (${greatest_decrease['amount']})\n")
+
+print(f"Results have been exported to {output_txt}")
