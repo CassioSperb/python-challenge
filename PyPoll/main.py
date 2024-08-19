@@ -54,3 +54,6 @@ with open(output_txt, 'w') as file:
         file.write(line + "\n")
 
 print(f"Results have been exported to {output_txt}")
+
+print(f"Looking for the file at: {election_csv}")
+
