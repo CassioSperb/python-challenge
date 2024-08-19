@@ -2,12 +2,6 @@ import os
 import csv
 from datetime import datetime  # Import the datetime module
 
-# Path to collect data from the Resources folder
-budget_csv = os.path.join('Resources', 'budget_data.csv')
-
-# Path to export the results
-output_txt = os.path.join('Analysis', 'analysis_output.txt')
-  
 # Function to extract the year and month from a date
 def extract_year_month(date_str):
      # Adjust '%b-%y' to match the date format 'Jan-10'
@@ -64,22 +58,24 @@ if changes:
 else:
     average_change = 0
 
-print("Financial Analysis")
-print("---------------------------")
-print(f"Total Months: {total_months}")
-print(f"Net Total: ${net_total}")
-print(f"Average Change: ${average_change:.2f}")
-print(f"Greatest Increase in Profits: {greatest_increase['date']} (${greatest_increase['amount']})")
-print(f"Greatest Decrease in Profits: {greatest_decrease['date']} (${greatest_decrease['amount']})")
+# Print and save the results
+output =[]
+output.append(f"Financial Analysis")
+output.append(f"---------------------")
+output.append(f"Total Months: {total_months}\n")
+output.append(f"Net Total: ${net_total}\n")
+output.append(f"Average Change: ${average_change:.2f}\n")
+output.append(f"Greatest Increase in Profits: {greatest_increase['date']} (${greatest_increase['amount']})\n")
+output.append(f"Greatest Decrease in Profits: {greatest_decrease['date']} (${greatest_decrease['amount']})\n")
 
-# Export results to a text file
+# Print the output to the terminal
+for line in output:
+    print(line)
+
+# Export the results to a text file
+output_txt = os.path.join('Analysis', 'Finacial_Analysis.txt')
 with open(output_txt, 'w') as file:
-    file.write("Financial Analysis")
-    file.write("---------------------------")
-    file.write(f"Total Months: {total_months}\n")
-    file.write(f"Net Total: ${net_total}\n")
-    file.write(f"Average Change: ${average_change:.2f}\n")
-    file.write(f"Greatest Increase in Profits: {greatest_increase['date']} (${greatest_increase['amount']})\n")
-    file.write(f"Greatest Decrease in Profits: {greatest_decrease['date']} (${greatest_decrease['amount']})\n")
+    for line in output:
+        file.write(line + "\n")
 
 print(f"Results have been exported to {output_txt}")
