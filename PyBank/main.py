@@ -1,6 +1,5 @@
 import os
 import csv
-from datetime import datetime  # Import the datetime module
 
 # Path to collect data from the Resources folder
 budget_csv = os.path.join('Resources', 'budget_data.csv')
